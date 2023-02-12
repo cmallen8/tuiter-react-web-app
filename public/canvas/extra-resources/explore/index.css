@@ -1,20 +1,23 @@
 .wd-search-bar {
+    border-radius: 20px;
+    background-color: #202326;
+    background-image: url("search.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     padding-left: 35px;
     border: none;
+    height: 25px;
     vertical-align: bottom;
+    color: white;
+    width: 80%;
     font-size: 15px;
-    width: 100%;
-}
-
-.wd-grey-border {
-    border-style: solid;
-    border-color: lightgrey;
-    border-width: thin;
 }
 
 .wd-gear-image {
-    left: 13px;
-    bottom: 12px;
+    position: fixed;
+    right: 12px;
+    height: 30px;
+
 }
 
 .wd-top-menu-item {
@@ -37,8 +40,8 @@
 
 h2 {
     font-size: 15px;
-    padding: 5px;
-    margin: 5px;
+    padding: 2px;
+    margin: 0px;
 }
 
 p {
@@ -61,6 +64,7 @@ p {
     border-radius: 20px;
 }
 
-.wd-logo {
-    height: 40px;
+.wd-check {
+    height: 12px;
 }
+
