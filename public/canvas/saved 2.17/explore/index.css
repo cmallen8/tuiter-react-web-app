@@ -1,0 +1,66 @@
+.wd-search-bar {
+    padding-left: 35px;
+    border: none;
+    vertical-align: bottom;
+    font-size: 15px;
+    width: 100%;
+}
+
+.wd-grey-border {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+}
+
+.wd-gear-image {
+    left: 13px;
+    bottom: 12px;
+}
+
+.wd-top-menu-item {
+    padding: 16px 32px 16px 0px;
+    float: left;
+    text-align-last: center;
+    font-size: 15px;
+}
+
+.wd-top-menu-item-highlight {
+    color: #1DA1F2;
+    hover: #1DA1F2;
+    visited: #1DA1F2;
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-bottom-color: #1DA1F2;
+    padding-bottom: 13px;
+}
+
+
+h2 {
+    font-size: 15px;
+    padding: 5px;
+    margin: 5px;
+}
+
+p {
+    font-size: 13px;
+    color: #6E767D;
+    padding: 2px;
+    margin: 0px;
+    font-weight: normal;
+}
+
+.wd-title-text {
+    color: white;
+    font-weight: bold;
+}
+
+.wd-image {
+    float: right;
+    height: 100px;
+    margin-right: 16px;
+    border-radius: 20px;
+}
+
+.wd-logo {
+    height: 40px;
+}
