@@ -91,9 +91,10 @@ p {
 
 .wd-image {
     float: right;
-    height: 100px;
-    margin-right: 16px;
-    border-radius: 20px;
+    /*height: 90px;*/
+    width: 90%;
+
+
 }
 
 .wd-logo {
