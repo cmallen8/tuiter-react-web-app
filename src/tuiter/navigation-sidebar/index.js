@@ -28,7 +28,7 @@ const NavigationSidebar = () => {
                     </div>
                 </div>
             </Link>
-            <Link to="/tuiter/explore" className={`list-group-item
+            <Link to="/tuiter" className={`list-group-item
                     ${active === 'explore'?'active':''}`}>
                 <div className="row">
                     <div className="col-xxl-2 col-xl-2 col-lg-12 col-md-12 col-sm-12">
