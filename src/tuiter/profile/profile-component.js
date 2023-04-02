@@ -33,7 +33,7 @@ const ProfileComponent = () => {
                                 <img className="border-0" src={`/images/${profile.bannerPicture}`}/>
                                 <div className=" profile-location"> <img className="rounded-circle profile-pic" src={`/images/${profile.profilePicture}`}/></div>
                                 <div className=" text-right">
-                                    <Link to="/tuiter/profile-screen">
+                                    <Link to="/tuiter/edit-profile">
                                         <button className="btn rounded-pill border-secondary button-location w-25 float-end mt-2">Edit Profile</button>
                                     </Link>
                                 </div>

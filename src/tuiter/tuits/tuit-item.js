@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteTuit, likeTuit, unlikeTuit} from "./tuits-reducer";
+import {likeTuit, unlikeTuit} from "./tuits-reducer";
+import {deleteTuitsThunk, updateTuitThunk} from "../../services/tuits-thunks";
 
 const TuitItem = (
     {
@@ -19,11 +20,22 @@ const TuitItem = (
         }
     }
 ) =>{
-    const tuits = useSelector(state => state.tuits)
+    // const tuits = useSelector(state => state.tuits)
     const dispatch = useDispatch();
     const deleteTuitHandler = (id) => {
-        dispatch(deleteTuit(id));
+        dispatch(deleteTuitsThunk(id));
     }
+    const updatePosTuitHandler = (id) => {
+        dispatch(updateTuitThunk({
+            ...tuit,
+            likes: tuit.likes + 1
+        }))}
+
+    const updateNegTuitHandler = (id) => {
+        dispatch(updateTuitThunk({
+            ...tuit,
+            likes: tuit.likes - 1
+        }))}
     const likeTuitHandler = (id) => {
         dispatch(likeTuit(id))
     }
@@ -55,14 +67,14 @@ const TuitItem = (
                         </div>
 
                         <div className="row mt-2">
-                            <div className="col-3 text-start">
+                            <div className="col-2 text-start">
                                 <a href="#" className="text-decoration-none text-secondary">
                                     <i className="bi bi-chat-fill"></i> <span className="text-secondary">
                                         {tuit.replies}
                                     </span>
                                 </a>
                             </div>
-                            <div className="col-3 text-start">
+                            <div className="col-2 text-start">
                                 <a href="#" className="text-decoration-none text-secondary">
                                     <i className="bi bi-arrow-repeat"></i> <span className="text-secondary">
                                         {tuit.retuits}
@@ -70,23 +82,16 @@ const TuitItem = (
                                 </a>
                             </div>
                             <div className="col-3 text-start">
-                                {!tuit.liked &&
-                                    <button onClick={() => likeTuitHandler(tuit._id)}
-                                        className="text-secondary border-0 bg-body">
-                                    <i className="bi bi-heart-fill"></i>&nbsp;&nbsp;
-                                        {tuit.likes}
-                                </button>
-                                }
-                                {tuit.liked &&
-                                    <button onClick={() => unlikeTuitHandler(tuit._id)}
-                                        className="text-danger border-0 bg-body">
-                                        <i className="bi bi-heart-fill"></i>&nbsp;&nbsp;
-                                        {tuit.likes}
-                                    </button>
-                                }
+                                    Likes: {tuit.likes}
+                                    <i onClick={() => updatePosTuitHandler(tuit.id)} className="bi bi-heart-fill me-2 text-danger"></i>
 
                             </div>
-                            <div className="col-3 text-start">
+                            <div className="col-4 text-start">
+                                Dislikes: {tuit.likes}
+                                <i onClick={() => updateNegTuitHandler(tuit.id)} className="bi bi-heart-fill me-2 text-dark"></i>
+
+                            </div>
+                            <div className="col-1 text-start">
                                 <a href="#" className="text-decoration-none text-secondary">
                                     <i className="bi bi-upload"></i>
                                 </a>

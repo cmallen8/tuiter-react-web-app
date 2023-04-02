@@ -13,8 +13,6 @@ const TuitStats = () => {
 
     return(
         <>
-            <h2>Likes Counter with Redux</h2>
-
             Likes: {likes}
 
             <div className="row mt-2">

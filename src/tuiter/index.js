@@ -3,15 +3,13 @@ import Nav from "../nav";
 import NavigationSidebar from "./navigation-sidebar"
 import WhoToFollowList from "./who-to-follow-list";
 import ExploreComponent from "./explore";
-//import HomePostList from "./home";
-//import TuitsList from "./tuits";
 import HomeComponent from "./home";
 import ProfileComponent from "./profile/profile-component";
 import {Routes, Route} from "react-router";
 import whoReducer
     from "./reducers/who-reducer";                          // import reducer
 import tuitsReducer from "./tuits/tuits-reducer";
-import ProfileScreen from "./profile/profile-screen";
+import EditProfile from "./edit-profile/edit-profile-component";
 import profileReducer from "./profile/profile-reducer";
 import { configureStore }
     from '@reduxjs/toolkit';
@@ -22,7 +20,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
 const store = configureStore(
-    {reducer: {who: whoReducer, tuits: tuitsReducer, user: profileReducer}});
+    {reducer: {who: whoReducer, tuitsData: tuitsReducer, user: profileReducer}});
 function Tuiter() {
     return(
         // provide the store to the rest of the application so it can pull from the global state
@@ -39,7 +37,7 @@ function Tuiter() {
                         <Route path="home"    element={<HomeComponent/>}/>
                         <Route index element={<ExploreComponent/>}/>
                         <Route path="profile"    element={<ProfileComponent/>}/>
-                        <Route path="profile-screen"    element={<ProfileScreen/>}/>
+                        <Route path="edit-profile"    element={<EditProfile/>}/>
                     </Routes>
 
                 </div>
