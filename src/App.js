@@ -15,7 +15,8 @@ function App() {
                          element={<HelloWorld/>}/>
                   <Route path="/tuiter/*"
                          element={<Tuiter/>}/>
-
+                  <Route path="/final-project/*"
+                         element={<Home/>}/>
               </Routes>
           </div>
       </BrowserRouter>
