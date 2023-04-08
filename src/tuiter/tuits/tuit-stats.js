@@ -1,41 +1,31 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
-import tuits from "./index";
+import {updateTuitThunk} from "../../services/tuits-thunks";
 
-const TuitStats = () => {
-    const likes = useSelector(state => state.tuits);
+const TuitStats = ({tuit, likeTuit = () => {}}) => {
     const dispatch = useDispatch();
-
-    const likeTuit = () =>
-        dispatch({type: 'LIKE_TUIT'});
-    const unlikeTuit = () =>
-        dispatch({type: 'UNLIKE_TUIT'});
-
     return(
         <>
-            Likes: {likes}
-
             <div className="row mt-2">
                 <div className="col-3 text-start">
-                    <a href="#" className="text-decoration-none text-secondary">
-                        <i className="bi bi-chat-fill"></i> <span className="text-secondary">
-                                        {tuits.replies}
-                                    </span>
-                    </a>
+                    <i className="bi bi-chat-fill text-secondary"></i>
+                    <span className="text-secondary">
+                    {tuit.stats && tuit.stats.replies}</span>
                 </div>
                 <div className="col-3 text-start">
-                    <a href="#" className="text-decoration-none text-secondary">
-                        <i className="bi bi-arrow-repeat"></i> <span className="text-secondary">
-                                        {tuits.retuits}
-                                    </span>
-                    </a>
+                    <i className="bi bi-arrow-repeat text-secondary"></i>
+                    <span className="text-secondary">
+                        {tuit.stats && tuit.stats.retuits}
+                    </span>
                 </div>
                 <div className="col-3 text-start">
-                    <a href="#" className="text-decoration-none text-secondary">
-                        <i onClick={likeTuit} className="bi bi-heart-fill"></i> <span className="text-secondary">
-                                        {likes}
-                                    </span>
-                    </a>
+                    <div>
+                        Likes: {tuit.likes}
+                        <i onClick={() => dispatch(updateTuitThunk({
+                            ...tuit,
+                            likes: tuit.likes + 1
+                        }))} className="bi bi-heart-fill me-2 text-danger"></i>
+                    </div>
                 </div>
                 <div className="col-3 text-start">
                     <a href="#" className="text-decoration-none text-secondary">
@@ -43,20 +33,7 @@ const TuitStats = () => {
                     </a>
                 </div>
             </div>
-
-
-
-            <i onClick={likeTuit}
-
-               className="fas fa-thumbs-up"></i>
-
-            <i onClick={unlikeTuit}
-
-               className="fas fa-thumbs-down"></i>
-
         </>
-
     );
-
 }
 export default TuitStats;

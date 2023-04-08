@@ -1,8 +1,9 @@
 import Labs from "./Labs";
 import HelloWorld from "./Labs/a6/hello-world";
 import Tuiter from "./tuiter";
-import {BrowserRouter, Link} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
+import Home from "./final-project/home";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                          element={<HelloWorld/>}/>
                   <Route path="/tuiter/*"
                          element={<Tuiter/>}/>
+
               </Routes>
           </div>
       </BrowserRouter>

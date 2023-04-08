@@ -92,6 +92,7 @@ const tuitsSlice = createSlice({
     // clear loading flag
     // find index of updated tuit in array
     // merge old tuit with updated tuit
+    // the update likes and dislikes functionality works on refresh
     [updateTuitThunk.fulfilled]:
         (state, { payload }) => {
             state.loading = false
@@ -102,11 +103,10 @@ const tuitsSlice = createSlice({
                 ...payload
             }
         },
-
     // we're not going to use the old reducers anymore
     reducers: {}
 });
 
 // export reducer function
-export const {createTuit, deleteTuit, likeTuit, unlikeTuit} = tuitsSlice.actions;
+export const {likeTuit, unlikeTuit} = tuitsSlice.actions;
 export default tuitsSlice.reducer;

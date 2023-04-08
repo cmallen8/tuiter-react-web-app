@@ -1,7 +1,9 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {likeTuit, unlikeTuit} from "./tuits-reducer";
+//import {likeTuit, unlikeTuit} from "./tuits-reducer";
 import {deleteTuitsThunk, updateTuitThunk} from "../../services/tuits-thunks";
+
+// the update likes and dislikes functionality works on refresh
 
 const TuitItem = (
     {
@@ -22,26 +24,22 @@ const TuitItem = (
 ) =>{
     // const tuits = useSelector(state => state.tuits)
     const dispatch = useDispatch();
-    const deleteTuitHandler = (id) => {
-        dispatch(deleteTuitsThunk(id));
+    const deleteTuitHandler = (_id) => {
+        dispatch(deleteTuitsThunk(_id));
     }
-    const updatePosTuitHandler = (id) => {
+    // the functionality works on refresh
+    const updatePosTuitHandler = (_id) => {
         dispatch(updateTuitThunk({
             ...tuit,
             likes: tuit.likes + 1
         }))}
-
-    const updateNegTuitHandler = (id) => {
+// the functionality works on refresh
+    const updateNegTuitHandler = (_id) => {
         dispatch(updateTuitThunk({
             ...tuit,
-            likes: tuit.likes - 1
+            dislikes: tuit.dislikes + 1
         }))}
-    const likeTuitHandler = (id) => {
-        dispatch(likeTuit(id))
-    }
-    const unlikeTuitHandler = (id) => {
-        dispatch(unlikeTuit(id));
-    }
+
     return(
         <li className="list-group-item">
             <div className="row">
@@ -82,14 +80,14 @@ const TuitItem = (
                                 </a>
                             </div>
                             <div className="col-3 text-start">
-                                    Likes: {tuit.likes}
-                                    <i onClick={() => updatePosTuitHandler(tuit.id)} className="bi bi-heart-fill me-2 text-danger"></i>
-
+                                Likes: {tuit.likes}
+                                <i onClick={() => updatePosTuitHandler(tuit._id)}
+                                   className="bi bi-heart-fill me-2 text-danger"></i>
                             </div>
                             <div className="col-4 text-start">
-                                Dislikes: {tuit.likes}
-                                <i onClick={() => updateNegTuitHandler(tuit.id)} className="bi bi-heart-fill me-2 text-dark"></i>
-
+                                Dislikes: {tuit.dislikes}
+                                <i onClick={() => updateNegTuitHandler(tuit._id)}
+                                   className="bi bi-hand-thumbs-down-fill me-2 text-dark"></i>
                             </div>
                             <div className="col-1 text-start">
                                 <a href="#" className="text-decoration-none text-secondary">

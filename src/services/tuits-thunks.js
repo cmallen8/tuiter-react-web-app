@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import * as service from "./tuits-service"
+import tuitStats from "../tuiter/tuits/tuit-stats";
 
 // create thunk for findTuits
 // give unique name, thunk invokes
@@ -33,8 +34,12 @@ export const createTuitThunk = createAsyncThunk(
 // unique identifier
 // accepts updated tuit
 // sends updated tuit to server with service
+// the functionality works on refresh
 export const updateTuitThunk = createAsyncThunk(
     'tuits/updateTuit',
-    async (tuit) =>
-        await service.updateTuit(tuit)
+    async (tuit) => {
+        const updatetuit = await service.updateTuit(tuit)
+        return tuit;
+    }
+       // await service.updateTuit(tuit)
 )
