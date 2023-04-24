@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { loginThunk } from "../users/users-thunk"
 
 function Login() {
-    //const { currentUser } = useSelector((state) => state.users);
+    const { currentUser } = useSelector((state) => state.users);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
@@ -12,12 +12,11 @@ function Login() {
     const login = async () => {
         try {
             await dispatch(loginThunk({ username, password }));
-            navigate("/final-project/profile");
+            navigate("/profile");
         } catch (err) {
             console.log(err);
         }
     };
-
     return (
         <div>
             <h1>Login</h1>
@@ -27,8 +26,9 @@ function Login() {
                     type="text"
                     className="form-control"
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)
-                    }/>
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}/>
             </div>
             <div className="form-group">
                 <label>Password: </label>
@@ -36,15 +36,22 @@ function Login() {
                     type="password"
                     className="form-control"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)
-                    }
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
                 />
             </div>
             <button onClick={login} className="btn btn-primary">
                 Login
             </button>
-
-
+            <div>
+                {currentUser && (
+                    <div>
+                        <h2>{currentUser.username}</h2>
+                        <h2>{currentUser.password}</h2>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

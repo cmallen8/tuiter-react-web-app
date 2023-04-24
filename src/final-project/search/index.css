@@ -1,0 +1,17 @@
+.wd-width {
+    width: 350px;
+}
+
+.wd-crop-text {
+    -webkit-line-clamp: 3;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.wd-width-streamers {
+    border-radius: 15px;
+    width: 75px;
+    height: 75px;
+}
