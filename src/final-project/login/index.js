@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { loginThunk } from "../users/users-thunk"
 
 function Login() {
-    //const { currentUser } = useSelector((state) => state.users);
+    const { currentUser } = useSelector((state) => state.users);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
@@ -19,9 +19,9 @@ function Login() {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <div className="form-group">
+        <div className="col-12 bg-light shadow mb-5 p-3 border border-1 border-primary rounded-2">
+        <h4 className="text-secondary mb-3"><i className="bi bi-pencil-square"></i> Login</h4>
+            <div className="form-group text-secondary">
                 <label>Username: </label>
                 <input
                     type="text"
@@ -30,7 +30,7 @@ function Login() {
                     onChange={(e) => setUsername(e.target.value)
                     }/>
             </div>
-            <div className="form-group">
+            <div className="form-group text-secondary">
                 <label>Password: </label>
                 <input
                     type="password"
@@ -40,7 +40,7 @@ function Login() {
                     }
                 />
             </div>
-            <button onClick={login} className="btn btn-primary">
+            <button onClick={login} className="btn btn-primary mt-3">
                 Login
             </button>
 

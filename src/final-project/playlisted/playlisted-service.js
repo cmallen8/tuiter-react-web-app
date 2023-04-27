@@ -10,6 +10,13 @@ export const userPlaylistedShow = async (userId, showId) => {
     return response.data;
 };
 
+export const userUnPlaylistedShow = async (userId, showId) => {
+    const response = await axios.delete(
+        `${USERS_URL}/${userId}/playlisted/${showId}`
+    );
+    return response.data;
+};
+
 export const findPlaylistedShowByUserId = async (userId) => {
     const response = await axios.get(`${USERS_URL}/${userId}/playlisted`);
     return response.data;

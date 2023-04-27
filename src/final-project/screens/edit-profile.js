@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useState} from "react";
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
-import {updateUserThunk} from "../users/users-thunk";
+import {profileThunk, updateUserThunk} from "../users/users-thunk";
 import {Link} from "react-router-dom";
 import {useNavigate, useParams} from "react-router";
 
@@ -14,7 +14,15 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const handleSaveButton = async () => {
         await dispatch(updateUserThunk(profile));
+        navigate(`/final-project/profile`);
+
     };
+    useEffect(() => {
+
+        dispatch(profileThunk());
+        //fetchDetails();
+
+    }, []);
 
     return(
         <>
@@ -29,10 +37,10 @@ const EditProfile = () => {
                                 <span className="fw-bold h6">Edit Profile</span>
                             </div>
                             <div className="col-5">
-                                <Link to="/final-project/profile">
+
                                     <button onClick={handleSaveButton}
                                             className="btn btn-primary float-end mt-2">Save</button>
-                                </Link>
+
                             </div>
                         </div>
                         <div className="row">

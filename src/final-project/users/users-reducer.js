@@ -1,24 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {createUserThunk, updateUserThunk, deleteUserThunk, findUsersThunk, findUserByIdThunk, loginThunk, logoutThunk, registerThunk, profileThunk} from "./users-thunk";
 
-/*const initialState = {
+const initialState = {
     users: [],
     loading: false,
-    error: null,
     currentUser: null,
-};*/
+};
 
 const usersSlice = createSlice({
     name: "users",
-    initialState: { currentUser: null },
+    initialState,
     reducers: {},
     extraReducers: {
         [createUserThunk.fulfilled]: (state, action) => {
             state.users.push(action.payload);
         },
         // double check this
-        [updateUserThunk.fulfilled]: (state, {payload}) => {
-            state.currentUser = payload;
+        [updateUserThunk.fulfilled]: (state, action) => {
+            state.currentUser = action.payload;
         },
         [deleteUserThunk.fulfilled]: (state, action) => {
             state.users = state.users.filter((user) => user._id !== action.payload);

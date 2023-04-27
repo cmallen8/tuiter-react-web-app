@@ -12,6 +12,8 @@ import ProfileComponent from "./final-project/screens/profile";
 import Register from "./final-project/screens/register";
 import EditProfile from "./final-project/screens/edit-profile";
 import CurrentUserContext from "./final-project/components/current-user-context";
+import AdminScreen from "./final-project/screens/admin-screen";
+import ProfileView from "./final-project/screens/profile-view";
 
 function App() {
   return (
@@ -27,9 +29,13 @@ function App() {
                           <Route path="/final-project/search" element={<Search />}/>
                           <Route path="/final-project/search/:queryTerm" element={<Search />}/>
                           <Route path="/final-project/profile" element={<ProfileComponent />}/>
+                          <Route path="/final-project/profile/:_id" element={<ProfileComponent />}/>
                           <Route path="/final-project/profile/edit-profile" element={<EditProfile />}/>
                           <Route path="/final-project/login" element={<Login />}/>
                           <Route path="/final-project/register" element={<Register />}/>
+                          <Route path="/final-project/admin" element={<AdminScreen />} />
+                          <Route path="/final-project/admin/:_id" element={<AdminScreen />} />
+                          <Route path="/final-project/admin/view-profile/:_id" element={<ProfileView />} />
                       </Routes>
                   </div>
                   <div className="col-2">

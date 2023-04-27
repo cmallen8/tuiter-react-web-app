@@ -58,8 +58,7 @@ export const registerThunk = createAsyncThunk(
     }
 );
 
-export const profileThunk = createAsyncThunk(
-    "users/profile", async () => {
+export const profileThunk = createAsyncThunk("users/profile", async () => {
     const response = await usersService.profile();
     return response.data;
 });

@@ -30,10 +30,28 @@ export const getShowDetails = async (id) => {
     return response.data;
 };
 
-// https://api.themoviedb.org/3/tv/popular?api_key=dd701e383d2a6b36e447235e913eb3fe&page=1
+// https://api.themoviedb.org/3/tv/popular?api_key=dd701e383d2a6b36e447235e913eb3fe&page=1&language=en-US
 export const getPopular = async () => {
     const response = await axios.get(
         `${TMDB_API}tv/popular?api_key=${TMDB_KEY}&language=en-US&page=1`);
     return response.data.results;
 };
 
+
+// https://api.themoviedb.org/3/discover/tv?api_key=dd701e383d2a6b36e447235e913eb3fe&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0&with_genres=10762,10751
+export const getFamily = async () => {
+    const response = await axios.get(`${TMDB_API}discover/tv?api_key=${TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_genres=10762,10751`);
+    return response.data.results;
+}
+
+// https://api.themoviedb.org/3/discover/tv?api_key=dd701e383d2a6b36e447235e913eb3fe&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_genres=35
+export const getComedy = async () => {
+    const response = await axios.get(`${TMDB_API}discover/tv?api_key=${TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_genres=35`);
+    return response.data.results;
+}
+
+// https://api.themoviedb.org/3/discover/tv?api_key=dd701e383d2a6b36e447235e913eb3fe&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&&with_genres=16
+export const getAction = async () => {
+    const response = await axios.get(`${TMDB_API}discover/tv?api_key=${TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_genres=16`);
+    return response.data.results;
+}

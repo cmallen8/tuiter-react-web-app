@@ -76,6 +76,24 @@ const NavigationBar = () => {
                     </div>
                 </div>
             </Link>
+
+                {currentUser.isAdmin && (
+                    <>
+                        <Link to="/final-project/admin" className={`list-group-item
+            ${active === 'admin'?'active':''}`}>
+                            <div className="row">
+                                <div className="col-xxl-2 col-xl-2 col-lg-12 col-md-12 col-sm-12">
+                                    <i className="bi bi-incognito"></i>
+                                </div>
+                                <div className="col-xxl-10 col-xl-10 d-none d-xl-block">
+                                    Admin
+                                </div>
+                            </div>
+                        </Link>
+                    </>
+                )}
+
+
                 <div className={`list-group-item
             ${active === 'logout'?'active':''}`} onClick={() => {
                     dispatch(logoutThunk());
@@ -90,6 +108,7 @@ const NavigationBar = () => {
                         </div>
                     </div>
                 </div>
+
             </>)}
         </div>
     );

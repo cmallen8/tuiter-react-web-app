@@ -16,18 +16,19 @@ function Register() {
     const register = async () => {
         try {
             await dispatch(registerThunk({ username, password, firstName, lastName, email, userType }));
-           // navigate("/final-project/profile");
+           navigate("/final-project/login");
         } catch (err) {
             console.log(err);
         }
     };
 
     return (
-        <div>
-            <h1>Register</h1>
+        <div className="row">
+            <div className="col-12 bg-light shadow mb-5 p-3 border border-1 border-primary rounded-2">
+                <h4 className="text-secondary mb-3"><i className="bi bi-pencil-square"></i> Register</h4>
             <div className="row">
                 <div className="col-6">
-                    <div className="form-group">
+                    <div className="form-group mb-3 text-secondary">
                         <label>Username: </label>
                         <input
                             type="text"
@@ -38,8 +39,8 @@ function Register() {
                             }}/>
                     </div>
                 </div>
-                <div className="col-6">
-                    <div className="form-group">
+                <div className="col-6 mb-3">
+                    <div className="form-group text-secondary">
                         <label>Password: </label>
                         <input
                             type="password"
@@ -54,7 +55,7 @@ function Register() {
             </div>
 
 
-            <div className="form-group">
+            <div className="form-group mb-3 text-secondary">
                 <label>First Name: </label>
                 <input
                     type="test"
@@ -65,7 +66,7 @@ function Register() {
                     }}
                 />
             </div>
-            <div className="form-group">
+            <div className="form-group mb-3 text-secondary">
                 <label>Last Name: </label>
                 <input
                     type="test"
@@ -76,7 +77,7 @@ function Register() {
                     }}
                 />
             </div>
-            <div className="form-group">
+            <div className="form-group mb-3 text-secondary">
                 <label>Email: </label>
                 <input
                     type="email"
@@ -87,19 +88,42 @@ function Register() {
                     }}
                 />
             </div>
+
+            <div className="form-group mb-3 text-secondary">
+                Favorite Genre:<br/>
+                <div className="row">
+                    <div className="col-4 text-secondary">
+                        <input type="radio" id="Family" name="userType" value={userType}
+                               onChange={(e) => {
+                                   setUserType(e.target.id);
+                               }}/>
+                        <label for="Family">&nbsp;Family</label>
+                    </div>
+                    <div className="col-4">
+                        <input type="radio" id="Comedy" name="userType" value={userType}
+                               onChange={(e) => {
+                                   setUserType(e.target.id);
+                               }}/>
+                        <label for="Comedy">&nbsp;Comedy</label>
+                    </div>
+                    <div className="col-4">
+                        <input type="radio" id="Action" name="userType" value={userType}
+                               onChange={(e) => {
+                                   setUserType(e.target.id);
+                               }}/>
+                        <label for="Action">&nbsp;Action</label>
+                    </div>
+                </div>
+
+            </div>
+
+
             <button onClick={register} className="btn btn-primary">
                 Register
             </button>
 
-            <div>
-                {currentUser && (
-                    <div>
-                        <h2>{currentUser.username}</h2>
-                        <h2>{currentUser.password}</h2>
-                    </div>
-                )}
-            </div>
 
+            </div>
         </div>
     );
 }
